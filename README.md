@@ -1,0 +1,1 @@
+# latihanpart2
