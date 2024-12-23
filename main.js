@@ -12,3 +12,13 @@ document.addEventListener('click', (event) => {
         menu.classList.remove('active'); // Menghapus kelas 'active' untuk menutup menu
     }
 });
+function btn(){
+    window.location.href = "https://taplink.cc/mediaofficialmuhammadfitra49"
+}
+const data = new Date().getFullYear()
+const tahun = document.getElementById('tahun')
+tahun.innerHTML = data
+
+// contoh 
+// var da = prompt("masukan nama mu untuk login","");
+// alert(`selamat datang ${da} ke website kelas kami`)

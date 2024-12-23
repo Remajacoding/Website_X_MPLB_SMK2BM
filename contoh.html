@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin-top: 0px; /* Memberikan ruang untuk navbar di atas konten */
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Agar navbar tetap di atas */
+        }
+
+        .navbar .logo {
+            color: #fff;
+            font-size: 1.5rem;
+        }
+
+        .navbar .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .navbar .menu {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar .menu li {
+            margin: 0 20px;
+        }
+
+        .navbar .menu li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        /* Menu untuk layar kecil (mobile) */
+        @media (max-width: 768px) {
+            .navbar .menu {
+                position: fixed;
+                top: 60px;
+                right: -250px; /* Menu tersembunyi di luar layar */
+                width: 250px;
+                height: calc(100% - 60px);
+                background-color: #333;
+                flex-direction: column;
+                align-items: center;
+                transition: right 0.3s ease; /* Efek geser */
+            }
+
+            .navbar .menu.active {
+                right: 0; /* Menu muncul saat kelas 'active' ditambahkan */
+            }
+
+            .navbar .hamburger {
+                display: block; /* Hamburger hanya tampil pada layar kecil */
+            }
+
+            .navbar .menu li {
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Logo</div>
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <ul class="menu" id="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('menu');
+
+        // Menambahkan event listener pada tombol hamburger
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active'); // Toggle kelas 'active' pada menu
+        });
+
+        // Menutup menu saat diklik di luar navbar
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.navbar') && menu.classList.contains('active')) {
+                menu.classList.remove('active'); // Menghapus kelas 'active' untuk menutup menu
+            }
+        });
+    </script>
+
+</body>
+</html>
